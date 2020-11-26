@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="read_detail">
+     <select id="getNoticeBoardData">
+        SELECT
+            n.id,
+            n.title,
+            n.content,
+            n.user_id as userId,
+            u.name as userName,
+            u.image_url as userImageURL,
+            n.created_at as createdAt,
+            n.hit
+        FROM
+            notice_boards as n, users as u
+        WHERE
+        (
+            n.id = #{noticeBoardId}
+        AND
+            n.user_id = u.id
+        )
+     </select>
+</mapper>

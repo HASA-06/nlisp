@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="create">
+     <insert id="setScheduleBoardDatas">
+        INSERT INTO
+            schedule_boards
+        (
+            title,
+            content,
+            year,
+            month,
+            day,
+            start_time,
+            end_time,
+            user_id
+        )
+        VALUES
+        (
+            #{title},
+            #{content},
+            #{year},
+            #{month},
+            #{day},
+            #{startTime},
+            #{endTime},
+            #{id}
+        )
+     </insert>
+</mapper>

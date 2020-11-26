@@ -1,0 +1,24 @@
+Responsive option
+
+
+@media ( max-width : 600px ) {
+
+}
+
+
+Server error text : 
+
+console.log('Server error, please ask to developer');
+alert('Server error, please ask to developer');
+
+Token만료
+
+if(error.response.status == 401) {
+          this.$axios.post(this.$store.state.host + this.$store.state.urls.users.tokens.reIssue, null, headerConfig)
+          .then(res => {
+            if(res.status == 201) {
+              alert('토큰이 만료되어 재발급하였습니다. 새로고침 후 다시 진행하세요');
+              storageObject.setItem('token', res.data.token);
+            }
+          })
+        }

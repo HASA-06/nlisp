@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="read">
+     <select id="getScheduleBoardDatas">
+        SELECT
+            s.id,
+            s.title,
+            s.content,
+            s.year,
+            s.month,
+            s.day,
+            s.start_time as startTime,
+            s.end_time as endTime,
+            s.user_id as userId,
+            u.name as userName,
+            s.created_at as createdAt
+        FROM
+            schedule_boards as s, users as u
+        WHERE 
+            s.user_id = u.id
+        AND
+            s.month = #{scheduleMonth}
+        ORDER BY
+            s.day
+        DESC
+     </select>
+     <select id="getScheduleBoardDatasMore">
+        SELECT
+            s.id,
+            s.title,
+            s.content,
+            s.year,
+            s.month,
+            s.day,
+            s.start_time as startTime,
+            s.end_time as endTime,
+            s.user_id as userId,
+            u.name as userName,
+            s.created_at as createdAt
+        FROM
+            schedule_boards as s, users as u
+        WHERE
+        (
+            #{lastBulletinBoardId} > s.id
+        AND
+            s.user_id = u.id
+        )
+        ORDER BY
+            s.id
+        DESC
+        LIMIT 7;
+     </select>
+</mapper>

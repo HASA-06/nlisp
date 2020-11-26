@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="delete">
+    <delete id="deleteMentoMentiBoardData">
+        DELETE FROM
+            mento_menti_boards
+        WHERE
+        (
+            id = #{id}
+        AND
+            {
+                user_id = #{userId}
+            OR
+                #{userId} = 1
+            OR 
+                #{userId} = 2
+            )
+        )
+    </delete>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="list">
+     <select id="getMentoMentiMentoList">
+        SELECT
+            id,
+            name,
+            student_number as studentNumber,
+            phone_number as phoneNumber,
+            image_url as imageURL
+        FROM
+            users
+        WHERE
+        (
+            student_number > #{studentNumber}
+        AND
+            #{limitStudentNumber} > student_number
+        )
+        ORDER BY
+            student_number
+        DESC
+     </select>
+</mapper>

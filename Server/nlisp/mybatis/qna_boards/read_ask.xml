@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="read_ask">
+     <select id="getAskDatas">
+        SELECT
+            q.id,
+            q.title,
+            q.content,
+            q.create_date as createDate,
+            q.user_id as userId,
+            u.name as userName
+        FROM
+            qna_boards as q, users as u
+        WHERE
+        (
+            q.user_id = u.id
+        AND
+            q.is_answered = '0'
+        )
+        ORDER BY
+            q.id
+        DESC
+     </select>
+</mapper>

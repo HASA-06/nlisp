@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="answer">
+     <insert id="setQnaBoardAnswer">
+        UPDATE
+            qna_boards
+        SET
+            answer_content = #{answerContent},
+            admin_id = #{adminId},
+            is_answered = '1'
+        WHERE
+            id = #{id}
+     </insert>
+</mapper>

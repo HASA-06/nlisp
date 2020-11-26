@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sign_up">
+     <select id="checkDuplicate">
+        SELECT
+            email
+        FROM
+            users
+        WHERE
+            email = #{email}
+     </select>
+     <insert id="setUserDatas">
+        INSERT INTO
+            users
+        (
+            email,
+            name,
+            hashed_password,
+            salt,
+            student_number,
+            phone_number,
+            image_url,
+            image_name,
+            authorization,
+            kakao_id
+        )
+        VALUES
+        (
+            #{email},
+            #{name},
+            #{hashed_password},
+            #{salt},
+            #{student_number},
+            #{phone_number},
+            #{image_url},
+            #{image_name},
+            '1',
+            #{kakao_id}
+        )
+    </insert>
+</mapper>

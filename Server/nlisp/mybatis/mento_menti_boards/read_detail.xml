@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="read_detail">
+     <select id="getMentoMentiBoardDataById">
+        SELECT
+            m.id,
+            m.title,
+            m.content,
+            m.user_id as userId,
+            u.name as userName,
+            u.image_url as userImageURL,
+            m.create_date as createDate,
+            m.hit
+        FROM
+            mento_menti_boards as m, users as u
+        WHERE
+        (
+            m.id = #{mentoMentiBoardId}
+        AND
+            m.user_id = u.id
+        )
+     </select>
+</mapper>

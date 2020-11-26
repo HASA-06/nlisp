@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="read_detail">
+     <select id="getBulletinBoardDatasMore">
+        SELECT
+            b.id,
+            b.title,
+            b.content,
+            b.user_id as userId,
+            u.name as userName,
+            b.created_at as createdAt,
+            b.hit
+        FROM
+            bulletin_boards as b, users as u
+        WHERE
+        (
+            b.id = #{bulletinBoardId}
+        AND
+            b.user_id = u.id
+        )
+     </select>
+</mapper>
